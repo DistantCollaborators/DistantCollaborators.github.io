@@ -11,11 +11,12 @@
 	</head>
 	<body>
 	
-		<p id="CostsID"><em>Click Here</em> to show Total Cost over time.</p><br>
+		<p id="CostsID"><em>Click Here</em> to show Total Cost over time ($M).</p><br>
 		<p id="ParticipationID"><em>Click Here</em> to show Average Partipation in Thousands over time.</p>
 			
 		<script type="text/javascript">
 
+			//Code Sources are Purdue IE590 course material and assigned D3 book (Scott Murray) examples
 			//Width and height
 			var w = 1500;
 			var h = 600;
@@ -65,13 +66,30 @@
   				})
 */
 			var xScale = d3.scale.linear()
-							.domain(d3.range(cost.length))
-							.rangeRound([0, w/cost.length]);
+				.domain(d3.range(cost.length))
+				.rangeRound([0, w/cost.length]);
 
 			var yScale = d3.scale.linear()
-							.domain([20, d3.max(cost)])
-							.range([0, h]);
+				.domain([20, d3.max(cost)])
+				.range([0, h]);
 
+			var yAxisScaleCost = d3.scale.linear()
+				.domain([20, d3.max(cost)])
+				.range([h, 0]);
+
+			var yAxisCost = d3.svg.axis()
+				.scale(yAxisScaleCost)
+				.orient("left")
+				.ticks(4);
+
+			var yAxisScaleParticipation = d3.scale.linear()
+				.domain([20, d3.max(participation)])
+				.range([h, 0]);
+
+			var yAxisParicipation = d3.svg.axis()
+				.scale(yAxisScaleParticipation)
+				.orient("left")
+				.ticks(4);
 
 //			//Create SVG element
 			var svg = d3.select("body")
@@ -119,6 +137,7 @@
 			   .attr("fill", "black");
 
 
+
 			//On click, update with new data			
 			d3.select("#ParticipationID")
 				.on("click", function() {
@@ -138,6 +157,16 @@
 					   .attr("fill", function(d) {
 							return "skyblue";
 					   });
+
+					//change Y axis
+					svg.selectAll("g").remove();
+
+					//Rebuild Y Axis
+					svg.append("g")
+						.attr("class", "axis")
+						.attr("transform", "translate(60,0)")
+						.call(yAxisParicipation);
+
 				});
 
 //			On click, update with new data			
@@ -160,6 +189,15 @@
 							return "teal";
 					   });
 
+					//change Y axis
+					svg.selectAll("g").remove();
+
+					//Rebuild Y Axis	
+					svg.append("g")
+						.attr("class", "axis")
+						.attr("transform", "translate(60,0)")
+						.call(yAxisCost);
+				});
 
 /*
 					Update all labels
@@ -177,8 +215,13 @@
 					   .attr("y", function(d) {
 					   		return h - yScale(d) + 14;
 					   });
-*/					   				
-				});
+*/			
+
+			// Create Initial Yaxis
+			svg.append("g")
+				.attr("class", "axis")
+				.attr("transform", "translate(" + 60+ ",0)")
+				.call(yAxisCost);
 
 			});
 		
