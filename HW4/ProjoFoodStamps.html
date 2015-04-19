@@ -11,13 +11,13 @@
 	</head>
 	<body>
 	
-		<p id="CostsID">Click Here to show Total Cost over time.</p><br>
-		<p id="ParticipationID">Click Here to show Average Partipation in Thousands over time.</p>
+		<p id="CostsID"><em>Click Here</em> to show Total Cost over time.</p><br>
+		<p id="ParticipationID"><em>Click Here</em> to show Average Partipation in Thousands over time.</p>
 			
 		<script type="text/javascript">
 
 			//Width and height
-			var w = 900;
+			var w = 1500;
 			var h = 600;
 			var cost = [];
 			var participation = [];
@@ -26,7 +26,7 @@
 			var header = [];
 			var year = [];
 			var eachtest = [];
-			var padding = 5;
+			var padding = 10;
 
 //			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
 //							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
@@ -69,7 +69,7 @@
 							.rangeRound([0, w/cost.length]);
 
 			var yScale = d3.scale.linear()
-							.domain([0, d3.max(cost)])
+							.domain([20, d3.max(cost)])
 							.range([0, h]);
 
 
@@ -99,9 +99,9 @@
 					return "teal";
 			   });
 
-			/*Create labels
+			//Create labels
 			svg.selectAll("text")
-			   .data(cost)
+			   .data(year)
 			   .enter()
 			   .append("text")
 			   .text(function(d) {
@@ -109,16 +109,16 @@
 			   })
 			   .attr("text-anchor", "middle")
 			   .attr("x", function(d, i) {
-			   		return xScale(i) + xScale.rangeBand() / 2;
+			   		return xScale(i) + padding;
 			   })
 			   .attr("y", function(d) {
-			   		return h - yScale(d) + 14;
+			   		return h - yScale(d);
 			   })
 			   .attr("font-family", "sans-serif")
-			   .attr("font-size", "11px")
-			   .attr("fill", "white");
+			   .attr("font-size", "10px")
+			   .attr("fill", "black");
 
-*/
+
 			//On click, update with new data			
 			d3.select("#ParticipationID")
 				.on("click", function() {
@@ -136,7 +136,7 @@
 					   		return yScale(d);
 					   })
 					   .attr("fill", function(d) {
-							return "blue";
+							return "skyblue";
 					   });
 				});
 
