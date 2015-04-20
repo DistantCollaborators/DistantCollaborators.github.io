@@ -11,7 +11,7 @@
 	</head>
 	<body>
 	
-		<p id="CostsID"><em>Click Here</em> to show Total Cost over time ($M).</p><br>
+		<p id="CostsID"><em>Click Here</em> to show Total Cost over time ($M).</p>
 		<p id="ParticipationID"><em>Click Here</em> to show Average Partipation in Thousands over time.</p>
 			
 		<script type="text/javascript">
@@ -28,10 +28,7 @@
 			var year = [];
 			var eachtest = [];
 			var padding = 10;
-
-//			var dataset = [ 5, 10, 13, 19, 21, 25, 22, 18, 15, 13,
-//							11, 12, 15, 20, 18, 17, 16, 18, 23, 25 ];
-			
+		
 //			 http://www.fns.usda.gov/sites/default/files/pd/SNAPsummary.xls
 			d3.csv("SNAPsummary.csv", function(SNAPdata) {
 				console.log("Snapdata Input");
@@ -52,19 +49,9 @@
 						console.log("Cost:  "+cost+" total Length:"+cost.length);
 						console.log("Participation:  "+participation+" total Length:"+participation.length);
 						console.log("Plot Data:  "+plotcost);
-						//console.log(plotcost);
-						//console.log(plotparticipation);
   					}
   				});
 
-/*  Doesn't work yet
-  				SNAPdata.forEach(function(d) {
-  					d.eachtest = +d['Fiscal Year'];
-  					if (d['Fiscal Year']==='2014'){
-						console.log("For Each Test Years: "+eachtest);
-  					};
-  				})
-*/
 			var xScale = d3.scale.linear()
 				.domain(d3.range(cost.length))
 				.rangeRound([0, w/cost.length]);
@@ -91,7 +78,7 @@
 				.orient("left")
 				.ticks(4);
 
-//			//Create SVG element
+			//Create SVG element
 			var svg = d3.select("body")
 						.append("svg")
 						.attr("width", w)
@@ -113,7 +100,6 @@
 			   		return yScale(d);
 			   })
 			   .attr("fill", function(d) {
-//					return "rgb(0, 0, " + (d*.2) + ")";
 					return "teal";
 			   });
 
@@ -169,7 +155,7 @@
 
 				});
 
-//			On click, update with new data			
+			//On click, update with new data			
 			d3.select("#CostsID")
 				.on("click", function() {
 
@@ -197,25 +183,7 @@
 						.attr("class", "axis")
 						.attr("transform", "translate(60,0)")
 						.call(yAxisCost);
-				});
-
-/*
-					Update all labels
-					svg.selectAll("text")
-					   .data(participation)
-					   .transition()
-					   .duration(2000)
-					   .ease("linear")
-					   .text(function(d) {
-					   		return d;
-					   })
-					   .attr("x", function(d, i) {
-					   		return xScale(i) + xScale.rangeBand() / 2;
-					   })
-					   .attr("y", function(d) {
-					   		return h - yScale(d) + 14;
-					   });
-*/			
+				});	
 
 			// Create Initial Yaxis
 			svg.append("g")
