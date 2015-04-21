@@ -3,11 +3,26 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>7Growth and Costs of the Supplemental Nutrition Assistance Program</title>
+	<title>Growth and Costs of the Supplemental Nutrition Assistance Program</title>
 	<script src="http://d3js.org/d3.v3.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
 
 <style>
+	path:hover {
+		opacity: 0.3;
+		transition-duration: 0.2s;}
+	div.tooltip {   
+		position: absolute;
+		min-width: 60px;
+		height: auto;
+		padding: 10px;
+		background-color: silver;
+		border-radius: 10px;
+		pointer-events: none;}
+
 	body {background-color:lightgray}
 	h1 {
 		font: 20px sans-serif;
@@ -25,18 +40,18 @@
 	.legend { list-style: none; }
 	.legend li { float: left; margin-right: 10px; }
 	.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
-	.legend .first { background-color: #FF66A3; }
-	.legend .second { background-color: #FF0066; }
-	.legend .third { background-color: #99003D; }
-	.legend .fourth { background-color: #4C001F; }
-	.legend .fifth { background-color: #000000; }
+	.legend .first { background-color: #29A329; }
+	.legend .second { background-color: #248F24; }
+	.legend .third { background-color: #1A661A; }
+	.legend .fourth { background-color: #0F3D0F; }
+	.legend .fifth { background-color: #051405; }
 </style>
 
 <body>
 <center>
 	
 	<h1>Growth and Costs of the Supplemental Nutrition Assistance Program</h1><br><br>
-	<p class="textBlock"><b>2005 Benefits per Household</b></p>
+	<p class="textBlock"><b>2014 Benefits per Household</b></p>
 	<p class="textBlock">The map below shows the benefits per household by state for the Supplemental
 		Nutrition Assistance Program (SNAP). This program was formally known as the Food Stamps program.
 		Blank States reflect an absence of data. Thanks to Mrs. Nadine Nichols and Mrs. Maeve Myers 
@@ -45,20 +60,23 @@
 
 <div id="plot1" style="margin:0px auto;">
 	<script type="text/javascript">
-		var w = 1000;
-		var h = 600;
+		var w = 800;
+		var h = 400;
 		var projection = d3.geo.albersUsa()
 			.translate([w/2, h/2])
-			.scale([1000]);
+			.scale([800]);
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-			.range(["#FF66A3","black","#99003D","#4C001F","#000000"]);
+		.range(["#1F7A1F","#1A661A","#145214","#0F3D0F","#0A290A","#051405","#000000"]);
+		var div = d3.select("body").append("div")   
+		    .attr("class", "tooltip")               
+		    .style("opacity", 0);
 		var svg = d3.select("#plot1")
 					.append("svg")
 					.attr("width", w)
 					.attr("height", h);
-		d3.csv("2009costPerHome.csv", function(data) {
+		d3.csv("2014costPerHome.csv", function(data) {
 			color.domain([
 				d3.min(data, function(d) { return d.value; }), 
 				d3.max(data, function(d) { return d.value; })
@@ -93,16 +111,16 @@
 				   		}
 				   })
    				.on("mouseover", function(d) {
-					tooltip.transition()
-					.duration(200)
+					div.transition()
 					.style("opacity", .9);
-					tooltip.html(d.properties.value)
+					div.html(function() { 
+							return "State: <strong>" + d.properties.name + "</strong><br> Benefit per home: $<strong>" + d.properties.value;
+            			}) 
 					.style("left", (d3.event.pageX + 10) + "px")
 					.style("top", (d3.event.pageY - 8) + "px");
 				})
 				.on("mouseout", function(d) {
-					tooltip.transition()
-					.duration(500)
+					div.transition()
 					.style("opacity", 0);
 					});
 	
@@ -110,13 +128,13 @@
 		});
 	</script>
 </div>
-<div style="width:600px; margin: 0 auto 0 auto;">
+<div style="width:400px; margin: 0 auto 0 auto;">
 	<ul class="legend">
-    		<li><span class="first"></span> $200 or less</li>
-    		<li><span class="second"></span>$200-$228</li>
-    		<li><span class="third"></span> $229-$260</li>
-    		<li><span class="fourth"></span> $261-$299</li>
-     		<li><span class="fifth"></span> $300 and up </li>
+    		<li><span class="first"></span>$200+</li>
+    		<li><span class="second"></span>$230+</li>
+    		<li><span class="third"></span>$260+</li>
+    		<li><span class="fourth"></span>$280+</li>
+     		<li><span class="fifth"></span>$300+</li>
 	</ul>
 </div><br><br>
 
