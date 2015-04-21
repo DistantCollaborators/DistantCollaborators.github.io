@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>8Growth and Costs of the Supplemental Nutrition Assistance Program</title>
+	<title>Growth and Costs of the Supplemental Nutrition Assistance Program</title>
 	<script src="http://d3js.org/d3.v3.js"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -51,7 +51,7 @@
 <center>
 	
 	<h1>Growth and Costs of the Supplemental Nutrition Assistance Program</h1><br><br>
-	<p class="textBlock"><b>2005 Benefits per Household</b></p>
+	<p class="textBlock"><b>2014 Benefits per Household</b></p>
 	<p class="textBlock">The map below shows the benefits per household by state for the Supplemental
 		Nutrition Assistance Program (SNAP). This program was formally known as the Food Stamps program.
 		Blank States reflect an absence of data. Thanks to Mrs. Nadine Nichols and Mrs. Maeve Myers 
@@ -114,7 +114,7 @@
 					div.transition()
 					.style("opacity", .9);
 					div.html(function() { 
-							return "State: <strong>" + d.properties.name + "</strong><br> Money: <strong>" + d.properties.value;
+							return "State: <strong>" + d.properties.name + "</strong><br> Benefit: $<strong>" + d.properties.value;
             			}) 
 					.style("left", (d3.event.pageX + 10) + "px")
 					.style("top", (d3.event.pageY - 8) + "px");
