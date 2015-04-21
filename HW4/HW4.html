@@ -53,7 +53,7 @@
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-			.range(["#FF66A3","#FF0066","#99003D","#4C001F","#000000"]);
+			.range(["#FF66A3","black","#99003D","#4C001F","#000000"]);
 		var svg = d3.select("#plot1")
 					.append("svg")
 					.attr("width", w)
