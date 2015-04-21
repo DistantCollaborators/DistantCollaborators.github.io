@@ -26,7 +26,7 @@
 	.legend li { float: left; margin-right: 10px; }
 	.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
 	.legend .first { background-color: #FFFAFA; }
-	.legend .second { background-color: #F4C2C2; }
+	.legend .second { background-color: black; }
 	.legend .third { background-color: green; }
 	.legend .fourth { background-color: #CE1620; }
 	.legend .fifth { background-color: #800000; }
@@ -53,7 +53,7 @@
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-			.range(["#FFFAFA","#F4C2C2","green","#CE1620","#800000"]);
+			.range(["#FFFAFA","black","green","#CE1620","#800000"]);
 		var svg = d3.select("#plot1")
 					.append("svg")
 					.attr("width", w)
