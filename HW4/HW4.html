@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>4Growth and Costs of the Supplemental Nutrition Assistance Program</title>
+	<title>5Growth and Costs of the Supplemental Nutrition Assistance Program</title>
 	<script src="http://d3js.org/d3.v3.js"></script>
 </head>
 
@@ -25,11 +25,11 @@
 	.legend { list-style: none; }
 	.legend li { float: left; margin-right: 10px; }
 	.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
-	.legend .first { background-color: #FFFAFA; }
-	.legend .second { background-color: black; }
-	.legend .third { background-color: green; }
-	.legend .fourth { background-color: #CE1620; }
-	.legend .fifth { background-color: #800000; }
+	.legend .first { background-color: #FF66A3; }
+	.legend .second { background-color: #FF0066; }
+	.legend .third { background-color: #99003D; }
+	.legend .fourth { background-color: #4C001F; }
+	.legend .fifth { background-color: #000000; }
 </style>
 
 <body>
@@ -53,7 +53,7 @@
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-			.range(["#FFFAFA","black","green","#CE1620","#800000"]);
+			.range(["#FF66A3","#FF0066","#99003D","#4C001F","#000000"]);
 		var svg = d3.select("#plot1")
 					.append("svg")
 					.attr("width", w)
