@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>7Growth and Costs of the Supplemental Nutrition Assistance Program</title>
+	<title>8Growth and Costs of the Supplemental Nutrition Assistance Program</title>
 	<script src="http://d3js.org/d3.v3.js"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -68,7 +68,10 @@
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-			.range(["#FF66A3","black","#99003D","#4C001F","#000000"]);
+		.range(["#FF66A3","black","#99003D","#4C001F","#000000"]);
+		var div = d3.select("body").append("div")   
+		    .attr("class", "tooltip")               
+		    .style("opacity", 0);
 		var svg = d3.select("#plot1")
 					.append("svg")
 					.attr("width", w)
@@ -109,7 +112,6 @@
 				   })
    				.on("mouseover", function(d) {
 					div.transition()
-					.duration(200)
 					.style("opacity", .9);
 					div.html(function() { 
 							return "State: <strong>" + d.properties.state + "</strong><br> Avg Payment: <strong>" + d.properties.value + "</strong><br> Std Dev: <strong>" + d.properties.std;
@@ -119,7 +121,6 @@
 				})
 				.on("mouseout", function(d) {
 					div.transition()
-					.duration(500)
 					.style("opacity", 0);
 					});
 	
