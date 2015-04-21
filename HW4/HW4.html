@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>6Growth and Costs of the Supplemental Nutrition Assistance Program</title>
+	<title>7Growth and Costs of the Supplemental Nutrition Assistance Program</title>
 	<script src="http://d3js.org/d3.v3.js"></script>
 </head>
 
@@ -58,7 +58,7 @@
 					.append("svg")
 					.attr("width", w)
 					.attr("height", h);
-		d3.csv("2014costPerHome.csv", function(data) {
+		d3.csv("2009costPerHome.csv", function(data) {
 			color.domain([
 				d3.min(data, function(d) { return d.value; }), 
 				d3.max(data, function(d) { return d.value; })
