@@ -111,7 +111,9 @@
 					div.transition()
 					.duration(200)
 					.style("opacity", .9);
-					div.html(d.properties.value)
+					div.html(function() { 
+							return "State: <strong>" + d.properties.state + "</strong><br> Avg Payment: <strong>" + d.properties.value + "</strong><br> Std Dev: <strong>" + d.properties.std;
+            			}) 
 					.style("left", (d3.event.pageX + 10) + "px")
 					.style("top", (d3.event.pageY - 8) + "px");
 				})
