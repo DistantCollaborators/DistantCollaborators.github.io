@@ -21,6 +21,9 @@
 		font-style: italic;
 		text-align: center;
 		}
+	.state-border {
+        	fill: none;
+        	stroke: black;}
 	.legend { list-style: none; }
 	.legend li { float: left; margin-right: 10px; }
 	.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
@@ -69,6 +72,12 @@
 						}
 					}		
 				}
+				svg.append("path").datum(topojson.mesh(ok, ok.objects.county, function(a, b) {
+        				return a === b;
+    				}))
+    				.attr("class", "state-border")
+    				.attr("d", path);
+    				
 				svg.selectAll("path")
 				   .data(json.features)
 				   .enter()
