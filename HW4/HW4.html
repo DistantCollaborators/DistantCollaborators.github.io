@@ -58,7 +58,7 @@
 					.append("svg")
 					.attr("width", w)
 					.attr("height", h);
-		d3.csv("2005costPerHome.csv", function(data) {
+		d3.csv("2009costPerHome.csv", function(data) {
 			color.domain([
 				d3.min(data, function(d) { return d.value; }), 
 				d3.max(data, function(d) { return d.value; })
