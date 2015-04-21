@@ -62,6 +62,7 @@
 				d3.max(data, function(d) { return d.value; })
 			]);
 			d3.json("us-states.json", function(json) {
+				var counties = topojson.feature(ok, ok.objects.county);
 				for (var i = 0; i < data.length; i++) {
 					var dataState = data[i].state;
 					var dataValue = parseFloat(data[i].value);
