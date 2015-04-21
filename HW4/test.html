@@ -79,19 +79,6 @@
 					}		
 				}
 				svg.selectAll("path")
-				   .data(json.features)
-				   .enter()
-				   .append("path")
-				   .attr("d", path)
-				   .style("fill", function(d) {
-				   		var value = d.properties.value;
-				   		
-				   		if (value) {
-					   		return color(value);
-				   		} else {
-					   		return "#ccc";
-				   		}
-				   })
    				.on("mouseover", function(d) {
 					tooltip.transition()
 					.duration(200)
@@ -105,6 +92,19 @@
 					.duration(500)
 					.style("opacity", 0);
 					});
+				.data(json.features)
+				.enter()
+				.append("path")
+				.attr("d", path)
+				.style("fill", function(d) {
+					var value = d.properties.value;
+				   		if (value) {
+					   		return color(value);
+				   		} else {
+					   		return "#ccc";
+				   		}
+				   })
+
 	
 			});
 		});
