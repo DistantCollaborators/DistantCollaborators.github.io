@@ -216,6 +216,10 @@
 				.scale(yAxisScaleParticipation)
 				.orient("left")
 				.ticks(4);
+				
+			var xAxis = d3.svg.axis()
+				.scale(xScale)
+				.orient("bottom");
 
 			//Create SVG element
 			var svg = d3.select("#time")
@@ -288,9 +292,14 @@
 
 					//Rebuild Y Axis
 					svg.append("g")
-						.attr("class", "axis")
+						.attr("class", "y axis")
 						.attr("transform", "translate(60,0)")
 						.call(yAxisParicipation);
+						
+					svg.append("g")
+						.attr("class", "x axis")
+						.attr("transform", "translate(0," + height + ")")
+						.call(xAxis);
 
 				});
 
@@ -319,16 +328,26 @@
 
 					//Rebuild Y Axis	
 					svg.append("g")
-						.attr("class", "axis")
+						.attr("class", "y axis")
 						.attr("transform", "translate(60,0)")
 						.call(yAxisCost);
+					
+					svg.append("g")
+						.attr("class", "x axis")
+						.attr("transform", "translate(0," + height + ")")
+						.call(xAxis);
 				});	
 
 			// Create Initial Yaxis
 			svg.append("g")
-				.attr("class", "axis")
+				.attr("class", "y axis")
 				.attr("transform", "translate(" + 60+ ",0)")
 				.call(yAxisCost);
+				
+			svg.append("g")
+				.attr("class", "x axis")
+				.attr("transform", "translate(0," + height + ")")
+				.call(xAxis);
 
 			});
 		
@@ -361,9 +380,6 @@
 
 </script>
 <!--End Google-->
-<br><br>
-<p class="textBlock"><b>Google Analytics Summary - 12 April 2015, 7:00PM EDT</b></p>
-<img src="googlesummary.jpg" width="60%">
 </center>
 </body>
 </html>
