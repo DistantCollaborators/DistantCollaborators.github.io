@@ -176,7 +176,6 @@
 			var year = [];
 			var eachtest = [];
 			var padding = 5;
-			var format = d3.format(",.2f");
 		
 //			 http://www.fns.usda.gov/sites/default/files/pd/SNAPsummary.xls
 			d3.csv("http://distantcollaborators.github.io/HW4/SNAPsummary.csv", function(SNAPdata) {
@@ -258,7 +257,7 @@
       		  		console.log(cost);
 				div.transition()
 				.style("opacity", .9);
-				div.html(return "$" + format(d);)
+				div.html(d3.format(".2f")(d))
 				.style("left", (d3.event.pageX + 10) + "px")
 				.style("top", (d3.event.pageY - 8) + "px");
 			})
