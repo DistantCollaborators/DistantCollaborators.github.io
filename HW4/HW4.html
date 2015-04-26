@@ -41,11 +41,11 @@
 	.legend { list-style: none; }
 	.legend li { float: left; margin-right: 10px; }
 	.legend span { border: 1px solid #ccc; float: left; width: 12px; height: 12px; margin: 2px; }
-	.legend .first { background-color: #29A329; }
-	.legend .second { background-color: #248F24; }
-	.legend .third { background-color: #1A661A; }
-	.legend .fourth { background-color: #0F3D0F; }
-	.legend .fifth { background-color: #051405; }
+	.legend .first { background-color: #009933; }
+	.legend .second { background-color: #669900; }
+	.legend .third { background-color: #CCCC00; }
+	.legend .fourth { background-color: #FF9900; }
+	.legend .fifth { background-color: #FF3300; }
 </style>
 
 <body>
@@ -70,7 +70,7 @@
 		var path = d3.geo.path()
 			.projection(projection);
 		var color = d3.scale.quantize()
-		.range(["#1F7A1F","#1A661A","#145214","#0F3D0F","#0A290A","#051405","#000000"]);
+		.range(["#009933","#669900","#CCCC00","#FF9900","#FF3300","#CC0000","#000000"]);
 		var div = d3.select("body").append("div")   
 		    .attr("class", "tooltip")               
 		    .style("opacity", 0);
@@ -253,8 +253,6 @@
 			   })
 			   /*add tooltips*/
       		  	.on("mouseover", function(d) {
-      		  		console.log(d);
-      		  		console.log(cost);
 				div.transition()
 				.style("opacity", .9);
 				div.html(d3.format(".2f")(d))
