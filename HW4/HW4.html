@@ -103,7 +103,8 @@
 				   .enter()
 				   .append("path")
 				   .attr("d", path)
-				   .style.color = "black"
+				   .style.borderColor = "black"
+				   .style.borderWidth = 1px
 				   .style("fill", function(d) {
 				   		var value = d.properties.value;
 				   		
