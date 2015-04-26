@@ -196,11 +196,11 @@
 				.rangeRound([0, w/cost.length]);
 
 			var yScale = d3.scale.linear()
-				.domain([20, d3.max(cost)])
+				.domain([0, d3.max(cost)])
 				.range([0, h]);
 
 			var yAxisScaleCost = d3.scale.linear()
-				.domain([20, d3.max(cost)])
+				.domain([0, d3.max(cost)])
 				.range([h, 0]);
 
 			var yAxisCost = d3.svg.axis()
@@ -209,7 +209,7 @@
 				.ticks(4);
 
 			var yAxisScaleParticipation = d3.scale.linear()
-				.domain([20, d3.max(participation)])
+				.domain([0, d3.max(participation)])
 				.range([h, 0]);
 
 			var yAxisParicipation = d3.svg.axis()
