@@ -22,7 +22,6 @@
 		background-color: silver;
 		border-radius: 10px;
 		pointer-events: none;}
-
 	body {background-color:lightgray}
 	h1 {
 		font: 20px sans-serif;
@@ -175,7 +174,6 @@
 				console.log("Map Snapdata for bar charts");
 				header = Object.keys(SNAPdata[0]);
 				console.log("Show header row:  "+header);
-
   				SNAPdata.map(function(d) {
   					console.log ('Fiscal Year '+d['Fiscal Year']+' - Total Costs '+d['Total Costs ($M)']);
   					year.push(d['Fiscal Year']);
@@ -190,28 +188,22 @@
 						console.log("Plot Data:  "+plotcost);
   					}
   				});
-
 			var xScale = d3.scale.linear()
 				.domain(d3.range(cost.length))
 				.rangeRound([0, w/cost.length]);
-
 			var yScale = d3.scale.linear()
-				.domain([0, d3.max(cost)])
+				.domain([20, d3.max(cost)])
 				.range([0, h]);
-
 			var yAxisScaleCost = d3.scale.linear()
-				.domain([0, d3.max(cost)])
+				.domain([20, d3.max(cost)])
 				.range([h, 0]);
-
 			var yAxisCost = d3.svg.axis()
 				.scale(yAxisScaleCost)
 				.orient("left")
 				.ticks(4);
-
 			var yAxisScaleParticipation = d3.scale.linear()
-				.domain([0, d3.max(participation)])
+				.domain([20, d3.max(participation)])
 				.range([h, 0]);
-
 			var yAxisParicipation = d3.svg.axis()
 				.scale(yAxisScaleParticipation)
 				.orient("left")
@@ -220,13 +212,11 @@
 			var xAxis = d3.svg.axis()
 				.scale(xScale)
 				.orient("bottom");
-
 			//Create SVG element
 			var svg = d3.select("#time")
 						.append("svg")
 						.attr("width", w)
-						.attr("height", h)
-
+						.attr("height", h);
 			//Create bars
 			svg.selectAll("rect")
 			   .data(cost)
@@ -245,7 +235,6 @@
 			   .attr("fill", function(d) {
 					return "teal";
 			   });
-
 			//Create labels
 			svg.selectAll("text")
 			   .data(year)
@@ -264,13 +253,9 @@
 			   .attr("font-family", "sans-serif")
 			   .attr("font-size", "10px")
 			   .attr("fill", "black");
-
-
-
 			//On click, update with new data			
 			d3.select("#ParticipationID")
 				.on("click", function() {
-
 					//Update all rects
 					svg.selectAll("rect")
 					   .data(participation)
@@ -286,10 +271,8 @@
 					   .attr("fill", function(d) {
 							return "skyblue";
 					   });
-
 					//change Y axis
 					svg.selectAll("g").remove();
-
 					//Rebuild Y Axis
 					svg.append("g")
 						.attr("class", "y axis")
@@ -300,13 +283,10 @@
 						.attr("class", "x axis")
 						.attr("transform", "translate(0," + height + ")")
 						.call(xAxis);
-
 				});
-
 			//On click, update with new data			
 			d3.select("#CostsID")
 				.on("click", function() {
-
 					//Update all rects
 					svg.selectAll("rect")
 					   .data(cost)
@@ -322,10 +302,8 @@
 					   .attr("fill", function(d) {
 							return "teal";
 					   });
-
 					//change Y axis
 					svg.selectAll("g").remove();
-
 					//Rebuild Y Axis	
 					svg.append("g")
 						.attr("class", "y axis")
@@ -337,7 +315,6 @@
 						.attr("transform", "translate(0," + height + ")")
 						.call(xAxis);
 				});	
-
 			// Create Initial Yaxis
 			svg.append("g")
 				.attr("class", "y axis")
@@ -348,7 +325,6 @@
 				.attr("class", "x axis")
 				.attr("transform", "translate(0," + height + ")")
 				.call(xAxis);
-
 			});
 		
 		</script>
@@ -374,10 +350,8 @@
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-61614012-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 <!--End Google-->
 </center>
