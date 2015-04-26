@@ -68,8 +68,7 @@
 			.translate([w/2, h/2])
 			.scale([800]);
 		var path = d3.geo.path()
-			.projection(projection)
-			.style("color", "black");
+			.projection(projection);
 		var color = d3.scale.quantize()
 		.range(["#009933","#669900","#CCCC00","#FF9900","#FF3300","#CC0000","#CC0000"]);
 		var div = d3.select("body").append("div")   
@@ -104,6 +103,7 @@
 				   .enter()
 				   .append("path")
 				   .attr("d", path)
+				   .style.color = "black"
 				   .style("fill", function(d) {
 				   		var value = d.properties.value;
 				   		
