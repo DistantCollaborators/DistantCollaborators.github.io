@@ -157,9 +157,8 @@
 		<script type="text/javascript">
 			//Code Sources are Purdue IE590 course material and assigned D3 book (Scott Murray) examples
 			//Width and height
-			var margin = {top: 20, right: 20, bottom: 30, left: 40},
-			var w = 1000 - margin.left - margin.right;
-			var h = 400 - margin.top - margin.bottom;
+			var w = 1000;
+			var h = 400;
 			var cost = [];
 			var participation = [];
 			var plotcost = [];
@@ -225,8 +224,8 @@
 			//Create SVG element
 			var svg = d3.select("#time")
 						.append("svg")
-						.attr("width", w + margin.left + margin.right)
-						.attr("height", h + margin.top + margin.bottom)
+						.attr("width", w)
+						.attr("height", h)
 
 			//Create bars
 			svg.selectAll("rect")
